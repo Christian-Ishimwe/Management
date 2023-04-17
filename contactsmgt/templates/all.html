@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+{%block content%}
+<div class="container" id="table">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-success">
+            {{ message}}
+        </div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+<table class="table table-bordered table-hover  table-responsive">
+    <tr class="table-active"><td class="col">Name</td><td class="col">Number</td><tr>
+    {% for conta in contacts %}
+    <tr class="col"><td class=".px-2">{{conta['username']}}</td><td class="col">{{conta['contacts']}}</td></tr>
+    {%endfor%}
+</table>
+<a class="btn btn-outline-dark btn-lg" href="{{url_for('add')}}">Add contact</a>
+
+</div>
+{%endblock%}
